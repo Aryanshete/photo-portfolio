@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Account - Photography Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="auth-page">
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <i class="fas fa-camera-retro"></i>
+            <span>Photo Gallery</span>
+        </div>
+        <div class="nav-links">
+            <button class="nav-btn" onclick="location.href='index.html'">
+                <i class="fas fa-home"></i> Home
+            </button>
+        </div>
+    </nav>
+
+    <div class="auth-container">
+        <!-- Login Form -->
+        <form id="login-form" class="auth-form">
+            <div class="form-header">
+                <i class="fas fa-user-circle"></i>
+                <h2>Welcome Back</h2>
+                <p>Sign in to access your account</p>
+            </div>
+
+            <div class="social-login">
+                <button type="button" class="social-btn google">
+                    <i class="fab fa-google"></i> Continue with Google
+                </button>
+                <button type="button" class="social-btn facebook">
+                    <i class="fab fa-facebook-f"></i> Continue with Facebook
+                </button>
+                <div class="divider">
+                    <span>or</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="login-email" placeholder="Email address" required>
+                </div>
+                <span class="validation-message"></span>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="login-password" placeholder="Password" required>
+                    <button type="button" class="toggle-password">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+                <span class="validation-message"></span>
+            </div>
+
+            <div class="form-options">
+                <label class="remember-me">
+                    <input type="checkbox" id="remember-me">
+                    <span>Remember me</span>
+                </label>
+                <a href="#" class="forgot-password">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                <span>Sign In</span>
+                <div class="loader"></div>
+            </button>
+
+            <p class="auth-switch">Don't have an account? <a href="#" id="show-register">Sign Up</a></p>
+        </form>
+
+        <!-- Registration Form -->
+        <form id="register-form" class="auth-form" style="display: none;">
+            <div class="form-header">
+                <i class="fas fa-user-plus"></i>
+                <h2>Create Account</h2>
+                <p>Join our photography community</p>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="register-name" placeholder="Full name" required>
+                </div>
+                <span class="validation-message"></span>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="register-email" placeholder="Email address" required>
+                </div>
+                <span class="validation-message"></span>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="register-password" placeholder="Create password" required>
+                    <button type="button" class="toggle-password">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+                <span class="validation-message"></span>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="register-confirm-password" placeholder="Confirm password" required>
+                    <button type="button" class="toggle-password">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+                <span class="validation-message"></span>
+            </div>
+
+            <div class="password-requirements">
+                <p>Password must contain:</p>
+                <ul>
+                    <li id="length-check"><i class="fas fa-circle"></i> At least 8 characters</li>
+                    <li id="uppercase-check"><i class="fas fa-circle"></i> One uppercase letter</li>
+                    <li id="number-check"><i class="fas fa-circle"></i> One number</li>
+                    <li id="special-check"><i class="fas fa-circle"></i> One special character</li>
+                </ul>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                <span>Create Account</span>
+                <div class="loader"></div>
+            </button>
+
+            <p class="auth-switch">Already have an account? <a href="#" id="show-login">Sign In</a></p>
+        </form>
+    </div>
+
+    <!-- User Dashboard -->
+    <div class="user-dashboard" id="user-dashboard" style="display: none;">
+        <nav class="dashboard-nav">
+            <div class="user-info">
+                <div class="user-avatar">
+                    <img src="default-avatar.png" alt="User Avatar" id="user-avatar">
+                    <div class="avatar-overlay">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                </div>
+                <div class="user-details">
+                    <h3 id="user-name">Loading...</h3>
+                    <p id="user-email">Loading...</p>
+                </div>
+            </div>
+            <div class="dashboard-menu">
+                <button class="menu-btn active" data-tab="favorites">
+                    <i class="fas fa-heart"></i>
+                    <span>Favorites</span>
+                </button>
+                <button class="menu-btn" data-tab="collections">
+                    <i class="fas fa-folder"></i>
+                    <span>Collections</span>
+                </button>
+                <button class="menu-btn" data-tab="settings">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </button>
+                <button id="logout-btn" class="menu-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </nav>
+
+        <main class="dashboard-content">
+            <!-- Favorites Section -->
+            <section id="favorites" class="dashboard-section active">
+                <h2><i class="fas fa-heart"></i> My Favorites</h2>
+                <div class="photo-grid" id="favorites-grid"></div>
+            </section>
+
+            <!-- Collections Section -->
+            <section id="collections" class="dashboard-section">
+                <h2><i class="fas fa-folder"></i> My Collections</h2>
+                <button id="new-collection-btn" class="action-btn">
+                    <i class="fas fa-plus"></i> New Collection
+                </button>
+                <div class="collections-grid" id="collections-grid"></div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings" class="dashboard-section">
+                <h2><i class="fas fa-cog"></i> Account Settings</h2>
+                <form id="settings-form" class="settings-form">
+                    <div class="form-group">
+                        <label>Profile Picture</label>
+                        <div class="avatar-upload">
+                            <img src="default-avatar.png" alt="Profile Picture" id="preview-avatar">
+                            <input type="file" id="avatar-input" accept="image/*">
+                            <button type="button" class="upload-btn">
+                                <i class="fas fa-camera"></i> Change Photo
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Display Name</label>
+                        <input type="text" id="display-name" placeholder="Your display name">
+                    </div>
+                    <div class="form-group">
+                        <label>Email Notifications</label>
+                        <div class="notification-options">
+                            <label class="switch">
+                                <input type="checkbox" id="notify-likes">
+                                <span class="slider"></span>
+                                <span class="label">Like notifications</span>
+                            </label>
+                            <label class="switch">
+                                <input type="checkbox" id="notify-comments">
+                                <span class="slider"></span>
+                                <span class="label">Comment notifications</span>
+                            </label>
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <span>Save Changes</span>
+                        <div class="loader"></div>
+                    </button>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toast-container"></div>
+
+    <script src="user.js"></script>
+</body>
+</html>
